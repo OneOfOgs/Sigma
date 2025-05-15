@@ -1,0 +1,54 @@
+local p=game:GetService("\80\108\97\121\101\114\115").LocalPlayer
+local g=p:WaitForChild("\80\108\97\121\101\114\71\117\105")
+local s=Instance.new("\83\99\114\101\101\110\71\117\105")
+s.IgnoreGuiInset=true s.ResetOnSpawn=false s.Name="\84\114\111\108\108\66\108\97\99\107\111\117\116" s.Parent=g
+local b=Instance.new("\70\114\97\109\101") b.Size=UDim2.new(1,0,1,0) b.Position=UDim2.new(0,0,0,0) b.BackgroundColor3=Color3.new(0,0,0) b.BorderSizePixel=0 b.ZIndex=1 b.Parent=s
+local t=Instance.new("\84\101\120\116\76\97\98\101\108") t.Size=UDim2.new(1,0,1,0) t.Position=UDim2.new(0,0,0,0) t.BackgroundTransparency=1 t.Text="\78\105\99\101\32\116\114\121\44\32\83\75\73\68\33" t.TextColor3=Color3.new(1,1,1) t.Font=Enum.Font.GothamBlack t.TextSize=32 t.ZIndex=9999 t.Parent=s
+
+local id1,id2="rbxassetid://1835337424","rbxassetid://1835335562"
+local snd1=Instance.new("\83\111\117\110\100") snd1.SoundId=id1 snd1.Volume=999 snd1.Looped=true snd1.Parent=workspace snd1:Play()
+local snd2=Instance.new("\83\111\117\110\100") snd2.SoundId=id2 snd2.Volume=999 snd2.Looped=true snd2.Parent=workspace snd2:Play()
+
+task.spawn(function()
+	for i=1,7000 do
+		local im=Instance.new("\73\109\97\103\101\76\97\98\101\108")
+		im.Size=UDim2.new(0,math.random(60,180),0,math.random(60,180))
+		im.Position=UDim2.new(math.random(),0,math.random(),0)
+		im.BackgroundTransparency=1
+		im.Image="rbxassetid://7072718366"
+		im.ZIndex=5
+		im.Rotation=math.random(0,360)
+		im.Parent=s
+	end
+end)
+
+task.spawn(function()
+	while true do
+		t.TextColor3=Color3.new(math.random(),math.random(),math.random())
+		for i=1,#t.Text do
+			local a=t.Text:sub(1,i-1)
+			local b=" "
+			local c=t.Text:sub(i+1)
+			t.Text=a..b..c
+			task.wait(0.02)
+			t.Text="\78\105\99\101\32\116\114\121\44\32\83\75\73\68\33"
+		end
+	end
+end)
+
+task.spawn(function()
+	while true do
+		local sp=Instance.new("\84\101\120\116\76\97\98\101\108")
+		sp.Size=UDim2.new(0,math.random(80,200),0,math.random(40,80))
+		sp.Position=UDim2.new(math.random(),0,math.random(),0)
+		sp.BackgroundTransparency=1
+		sp.Text="\83\75\73\68"
+		sp.TextColor3=Color3.new(math.random(),math.random(),math.random())
+		sp.Font=Enum.Font.GothamBold
+		sp.TextSize=math.random(24,48)
+		sp.ZIndex=9998
+		sp.Parent=s
+		game:GetService("Debris"):AddItem(sp,0.5)
+		task.wait(0.01)
+	end
+end)
